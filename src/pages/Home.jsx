@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -12,12 +13,12 @@ const Home = () => {
         <h1 className="text-[2em] mb-4 text-center font-bold">
           Become <br /> Meta Verified
         </h1>
-        <a
-          href="https://activition--subscription--beutiful--premium-features-service.vercel.Home/Request.html"
+        <Link
+          to="/verification"
           className="bg-[#0064e0] text-white py-2 px-9 rounded-full mt-4 text-base no-underline"
         >
-          Homely
-        </a>
+          Apply
+        </Link>
         <p className="text-lg mt-4 text-center">
           Grow your social presence with Meta Verified – a new subscription
           <br />
