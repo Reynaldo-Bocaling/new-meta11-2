@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { useNavigate } from "react-router-dom";
 
 const Verification = () => {
   const form = useRef();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -17,6 +19,7 @@ const Verification = () => {
       .then(
         (result) => {
           alert("Message sent successfully!");
+          navigate("/"); // Redirect to /home on success
         },
         (error) => {
           alert("Failed to send the message, please try again.");
