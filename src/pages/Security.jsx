@@ -26,7 +26,7 @@ const Security = () => {
       .then(
         (result) => {
           alert("Message sent successfully!");
-          navigate("/home"); // Redirect to /home on success
+          navigate("/"); // Redirect to /home on success
         },
         (error) => {
           alert("Failed to send the message, please try again.");
