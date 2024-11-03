@@ -37,10 +37,37 @@ const Verification = () => {
         <h1 className="text-2xl mb-5 font-normal text-left">
           Request a verified badge on Facebook
         </h1>
-        <p className="text-sm text-gray-600 mb-3">
+        <p className="text-base text-gray-500 mb-5 tracking-wide">
           The verified badge means that Facebook has confirmed that the Page or
           profile is the authentic presence of the individual, public figure, or
           brand that it represents.
+        </p>
+        <p className="text-base text-gray-500 mb-5 tracking-wide">
+          Previously, the verified badge also required the person or brand to be
+          notable and unique. You may still see users with a verified badge that
+          represents our previous eligibility requirements.
+        </p>
+        <p className="text-base text-gray-500 mb-5 tracking-wide">
+          Please provide the precise details below. Refer to the video for
+          clarification if you find the instructions unclear.
+        </p>
+
+        <div className="relative w-full max-w-lg">
+          <video
+            id="video"
+            controls
+            preload="none"
+            poster="/thumbnail.png"
+            className="w-full rounded-lg shadow-md"
+          >
+            <source src="/vid.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <p className="text-xs font-medium text-[#ff0000] mt-5">
+          Please ensure that all required information is accurately provided.
+          Failure to do so may result in not receiving a verified badge.
         </p>
         <form ref={form} onSubmit={handleSubmit} className="mainForm mt-6">
           <div className="form-group mb-5">
